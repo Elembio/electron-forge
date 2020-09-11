@@ -7,12 +7,12 @@ import { MakerSnapConfig } from './Config';
 export default class MakerSnap extends MakerBase<MakerSnapConfig> {
   name = 'snap';
 
-  defaultPlatforms: ForgePlatform[] = ['linux'];
+  defaultPlatforms: ForgePlatform[] = ['linux', 'darwin'];
 
   requiredExternalBinaries: string[] = ['snapcraft'];
 
   isSupportedOnCurrentPlatform() {
-    return process.platform === 'linux';
+    return process.platform === 'linux' || process.platform === 'darwin';
   }
 
   async make({
